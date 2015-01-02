@@ -51,6 +51,19 @@ wget http://archive.raspbian.org/raspbian/pool/main/l/lz4/liblz4-1_0.0~r122-2_ar
 wget http://archive.raspbian.org/raspbian/pool/main/l/lz4/liblz4-dev_0.0~r122-2_armhf.deb
 sudo dpkg -i liblz4-1_0.0~r122-2_armhf.deb liblz4-dev_0.0~r122-2_armhf.deb
 
+cd ~/ros_catkin_ws/external_src
+git clone https://github.com/ros/urdfdom_headers.git
+cd urdfdom_headers
+cmake .
+sudo checkinstall make install
+
+cd ~/ros_catkin_ws/external_src
+sudo apt-get -y install libboost-test-dev libtinyxml-dev
+git clone https://github.com/ros/urdfdom.git
+cd urdfdom
+cmake .
+sudo checkinstall make install
+
 # Resolving Dependencies with rosdep
 cd ~/ros_catkin_ws
 rosdep install --from-paths src --ignore-src --rosdistro indigo -y -r --os=debian:wheezy
@@ -59,6 +72,8 @@ rosdep install --from-paths src --ignore-src --rosdistro indigo -y -r --os=debia
 echo "[THIS TAKES A WHILE (HOURS!!!)]"
 sudo ./src/catkin/bin/catkin_make_isolated --install -DCMAKE_BUILD_TYPE=Release --install-space /opt/ros/indigo
 
+sh -c "echo \"source /opt/ros/indigo/setup.bash\" >> ~/.bashrc"
+source ~/.bashrc
 
 mkdir -p ~/catkin_ws/src
 cd ~/catkin_ws/src
@@ -66,7 +81,6 @@ catkin_init_workspace
 cd ~/catkin_ws/
 catkin_make
 
-sh -c "echo \"source /opt/ros/indigo/setup.bash\" >> ~/.bashrc"
 sh -c "echo \"source ~/catkin_ws/devel/setup.bash\" >> ~/.bashrc"
 sh -c "echo \"export ROS_MASTER_URI=http://localhost:11311\" >> ~/.bashrc"
 sh -c "echo \"export ROS_HOSTNAME=localhost\" >> ~/.bashrc"
