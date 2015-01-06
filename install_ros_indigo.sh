@@ -57,7 +57,7 @@ sh -c "echo \"source /opt/ros/indigo/setup.bash\" >> ~/.bashrc"
 sh -c "echo \"source ~/catkin_ws/devel/setup.bash\" >> ~/.bashrc"
 sh -c "echo \"export ROS_MASTER_URI=http://localhost:11311\" >> ~/.bashrc"
 sh -c "echo \"export ROS_HOSTNAME=localhost\" >> ~/.bashrc"
-
+sh -c "echo \"export ROSLAUNCH_SSH_UNKNOWN=1\" >> ~/.bashrc"
 echo "[Complete!!!]"
 
 exec bash

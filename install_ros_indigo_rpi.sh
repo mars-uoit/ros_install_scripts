@@ -69,7 +69,7 @@ cd ~/ros_catkin_ws
 rosdep install --from-paths src --ignore-src --rosdistro indigo -y -r --os=debian:wheezy
 
 # Building the catkin Workspace
-echo "[THIS TAKES A WHILE (HOURS!!!)]"
+echo "[THIS TAKES A WHILE (HOURS!)]"
 sudo ./src/catkin/bin/catkin_make_isolated --install -DCMAKE_BUILD_TYPE=Release --install-space /opt/ros/indigo
 
 sh -c "echo \"source /opt/ros/indigo/setup.bash\" >> ~/.bashrc"
@@ -84,6 +84,7 @@ catkin_make
 sh -c "echo \"source ~/catkin_ws/devel/setup.bash\" >> ~/.bashrc"
 sh -c "echo \"export ROS_MASTER_URI=http://localhost:11311\" >> ~/.bashrc"
 sh -c "echo \"export ROS_HOSTNAME=localhost\" >> ~/.bashrc"
+sh -c "echo \"export ROSLAUNCH_SSH_UNKNOWN=1\" >> ~/.bashrc"
 
 echo "[Complete!!!]"
 
