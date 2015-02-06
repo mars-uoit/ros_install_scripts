@@ -41,7 +41,7 @@ sudo apt-get update -qq
 sudo apt-get upgrade -qq
 
 echo "[Installing ROS]"
-sudo apt-get install -y ros-indigo-ros-base
+sudo apt-get install -y build-essential ros-indigo-ros-base
 
 echo "[rosdep init and python-rosinstall]"
 sudo sh -c "rosdep init"
