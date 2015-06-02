@@ -43,7 +43,7 @@ echo "[rosdep init and python-rosinstall]"
 sudo sh -c "rosdep init"
 rosdep update
 . /opt/ros/indigo/setup.sh
-sudo apt-get install -y python-rosinstall
+sudo apt-get install -y python-rosinstall python-catkin-tools
 
 echo "[Making the catkin workspace and testing the catkin_make]"
 mkdir -p ~/catkin_ws/src
@@ -63,5 +63,3 @@ echo "[Complete!!!]"
 exec bash
 
 exit 0
-
-
